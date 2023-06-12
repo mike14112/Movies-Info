@@ -1,8 +1,8 @@
-'use strict'
+"use strict"
+const  cards =  document.querySelector('.cards--section')
 
+const  currentFilmsId  =  window.location.search.split('=')[1]
 
-/// Elemenents 
-const cards = document.querySelector('.cards--section')
 
 const getMovie = async  function (num) {
     const ApiKey = '6ZPCSH8-QRK4NTV-Q3W6R5S-Q3WXF8R'
@@ -18,32 +18,24 @@ const getMovie = async  function (num) {
     console.log(films)
  for(let i = 0; i < films.length; i++){
 
-
     cards.innerHTML += `
-<div class="card col-4 mt-3  " style="width: 18rem;">
-<img src="${films[i].poster.url}" class="card-img-top" alt="...">
+<div class="card col-12 mt-3  " style="width: 25rem;">
+<img src="${films[i].poster.url}" class="card-img-top pt-0" alt="...">
 <div class="card-body">
 <h5 class="card-title film-name text-center ">${films[i].name}</h5>
 <p class="card-text  text-center ">Страна: ${films[i].countries[0].name}.</p>
 <p class="card-text  text-center raiting">Рейтинг: <span class="text-danger"> ${films[i].rating.imdb}</span></p>
 <p class="card-text  text-center year">Год: ${films[i].year}</p>
 <p class="card-text  text-center genre">${films[i].genres[0].name}</p>
-<p class="card-text  text-center about ">${films[i].description.substring(0,200)}... </p>
+<p class="card-text  text-center about ">${films[i].description}... </p>
+<a href="/html/filmsId.html?films=${films[i].id} "   class="btn btn-primary  d-grid gap-2 d-md-block top-10">Перейти куда-нибудь</a>
+
 </div>
-<a href="/html/filmsId.html?films=${films[i].id}"   class="btn btn-primary  mb-2">Перейти куда-нибудь</a>
 
 </div> 
 
 `
-
-
-
-
      }
 
-
-
-
-
 }
-getMovie(35)
+getMovie('https://api.kinopoisk.dev/v1.3/movie?page=1&limit=30&year=2023 ')
