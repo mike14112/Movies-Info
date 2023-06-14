@@ -15,7 +15,8 @@ const CurrentSection = document.querySelector('.card--section'),
       treilerSection = document.querySelector('.treiler'),
       imgPosterSection = document.querySelector(".img-poster"),
       btnTreiler = document.querySelector('.btn-treiler'),
-      movieLengthSection = document.querySelector('.movie-length'),
+      movieLengthSection = document.querySelector('.movie--length'),
+       rootMovieLength = document.querySelector('.root-mv-length')
       sliderSection = document.querySelector('.mySwiper')
 
       const  currentFilmsId  =  window.location.search.split('=')[1]
@@ -81,10 +82,19 @@ newFilmsGet( 'https://api.kinopoisk.dev/v1.3/movie?page=1&limit=50&rating.imdb=8
 console.log(filmsResp)
     titleSection.textContent = 'Название: ' +   filmsResp.name
     sloganSection.textContent =  filmsResp.slogan ?`Слоган:  ${filmsResp.slogan}`  : ' Слоган: Отсутствует'
-    ageRatingSection.textContent = `${filmsResp.ageRating}+`
+    ageRatingSection.textContent = filmsResp.ageRating ? `${filmsResp.ageRating}+`: 'Отствует Возрастной Рейтинг ' 
     ratingSection.textContent =  'Рейтинг: '  + filmsResp.rating.imdb
     imgPosterSection.setAttribute('src',  `${filmsResp.poster.url}`) 
-    movieLengthSection.textContent  += `${filmsResp.movieLength} мин.`
+ 
+     
+    rootMovieLength.textContent?'Продолжительность':'Количество Серии'
+
+    if(filmsResp.movieLength === null){
+
+      movieLengthSection.textContent +=    ` ${filmsResp.seriesLength} `
+    }else{
+   movieLengthSection.textContent  += ` ${filmsResp.movieLength} мин.`
+    }
     
 
     //  отображение   Бюджета
@@ -110,7 +120,7 @@ console.log(filmsResp)
     btnTreiler.setAttribute('href', `${filmsResp.videos.trailers[0].url}`)
 
 
-    premierSection.textContent += `${filmsResp.premiere.world.substring(0, 10)}`
+    premierSection.textContent += `${filmsResp.year}`
 
     // создание списка   Актеров  Главных 
 for(let i = 0; i < 10; i++){
