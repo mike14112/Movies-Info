@@ -30,7 +30,6 @@ const getMovie = async  function (num) {
 <p class="card-text  text-center raiting">Рейтинг: <span class="text-danger"> ${films[i].rating.imdb}</span></p>
 <p class="card-text  text-center year">Год: ${films[i].year}</p>
 <p class="card-text  text-center genre"> Жанр: ${films[i].genres[0].name}</p>
-<p class="card-text  text-center genre"> Жанр: ${films[i].genres[0].name}</p>
 
 <p class="card-text  text-center about "> Описание : ${films[i].description.substring(0,200)}... </p>
 </div>
@@ -49,7 +48,6 @@ input.addEventListener('change', (e) => {
  if(input.value !== ''){
     btnSearch.addEventListener('click', (e) => {
     e.currentTarget.setAttribute('href', `/html/search.html?films=${input.value}`)
-    input.value = ''
     })
  }
 
