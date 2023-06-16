@@ -17,7 +17,9 @@ const CurrentSection = document.querySelector('.card--section'),
       btnTreiler = document.querySelector('.btn-treiler'),
       movieLengthSection = document.querySelector('.movie--length'),
        rootMovieLength = document.querySelector('.root-mv-length')
-      sliderSection = document.querySelector('.mySwiper')
+      sliderSection = document.querySelector('.mySwiper'),
+      value = document.querySelector('.value'),
+      btnSearch = document.querySelector('.btn--search')
 
       const  currentFilmsId  =  window.location.search.split('=')[1]
 
@@ -85,7 +87,9 @@ console.log(filmsResp)
     ageRatingSection.textContent = filmsResp.ageRating ? `${filmsResp.ageRating}+`: 'Отствует Возрастной Рейтинг ' 
     ratingSection.textContent =  'Рейтинг: '  + filmsResp.rating.imdb
     imgPosterSection.setAttribute('src',  `${filmsResp.poster.url}`) 
- 
+     
+
+
      
     rootMovieLength.textContent?'Продолжительность':'Количество Серии'
 
@@ -112,6 +116,11 @@ console.log(filmsResp)
     // });
 
       // отображение  жанра 
+ 
+      filmsResp.countries.map(cn =>{
+        countrySection.textContent = `${cn.name}`
+      })
+
 
     filmsResp.genres.forEach(gn => {
        genresSection.textContent += ` ${gn.name} `
@@ -134,6 +143,15 @@ aboutSection.textContent = ` ${filmsResp.description}`
 
 
 }
+input.addEventListener('change', (e) => {
+  if(input.value !== ''){
+     btnSearch.addEventListener('click', (e) => {
+     e.currentTarget.setAttribute('href', `/html/search.html?films=${input.value}`)
+     input.value = ''
+     })
+  }
+ 
+ })
 
 
 

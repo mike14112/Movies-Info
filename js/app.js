@@ -2,7 +2,9 @@
 
 
 /// Elemenents 
-const cards = document.querySelector('.cards--section')
+const cards = document.querySelector('.cards--section'),
+       input = document.querySelector('.value'),
+       btnSearch = document.querySelector('.btn-search')
 
 const getMovie = async  function (num) {
     const ApiKey = '6ZPCSH8-QRK4NTV-Q3W6R5S-Q3WXF8R'
@@ -27,7 +29,9 @@ const getMovie = async  function (num) {
 <p class="card-text  text-center ">Страна: ${films[i].countries[0].name}.</p>
 <p class="card-text  text-center raiting">Рейтинг: <span class="text-danger"> ${films[i].rating.imdb}</span></p>
 <p class="card-text  text-center year">Год: ${films[i].year}</p>
-<p class="card-text  text-center genre"> Жанр :${films[i].genres[0].name}</p>
+<p class="card-text  text-center genre"> Жанр: ${films[i].genres[0].name}</p>
+<p class="card-text  text-center genre"> Жанр: ${films[i].genres[0].name}</p>
+
 <p class="card-text  text-center about "> Описание : ${films[i].description.substring(0,200)}... </p>
 </div>
 <a href="/html/filmsId.html?films=${films[i].id}"   class="btn btn-primary  mb-2">Перейти куда-нибудь</a>
@@ -41,7 +45,15 @@ const getMovie = async  function (num) {
 
      }
 
+input.addEventListener('change', (e) => {
+ if(input.value !== ''){
+    btnSearch.addEventListener('click', (e) => {
+    e.currentTarget.setAttribute('href', `/html/search.html?films=${input.value}`)
+    input.value = ''
+    })
+ }
 
+})
 
 
 

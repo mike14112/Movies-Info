@@ -1,7 +1,5 @@
 "use strict"
-const  cards =  document.querySelector('.cards--section'),
-       input = document.querySelector('.input'),
-       btnSearch = document.querySelector('.btn--search')
+const  cards =  document.querySelector('.cards--section')
 
 const  currentFilmsId  =  window.location.search.split('=')[1]
 
@@ -40,13 +38,14 @@ input.addEventListener('change', (e) => {
     if(input.value !== ''){
        btnSearch.addEventListener('click', (e) => {
        e.currentTarget.setAttribute('href', `/html/search.html?films=${input.value}`)
-    //    input.value = ''
+       input.value = ''
        })
     }
    
    })
 
+
      }
 
 }
-getMovie('https://api.kinopoisk.dev/v1.3/movie?page=1&limit=50&year=2023')
+getMovie('https://api.kinopoisk.dev/v1.3/movie?page=1&limit=50&year=2022')
