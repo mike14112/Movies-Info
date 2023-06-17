@@ -1,5 +1,7 @@
 "use strict"
-const  cards =  document.querySelector('.cards--section')
+const  cards =  document.querySelector('.cards--section'),
+        input  = document.querySelector('.input'),
+        btnSearch = document.querySelector('.btn--search')
 
 const  currentFilmsId  =  window.location.search.split('=')[1]
 

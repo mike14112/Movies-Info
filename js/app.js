@@ -3,7 +3,7 @@
 
 /// Elemenents 
 const cards = document.querySelector('.cards--section'),
-       input = document.querySelector('.value'),
+       input = document.querySelector('.input'),
        btnSearch = document.querySelector('.btn-search')
 
 const getMovie = async  function (num) {
@@ -21,6 +21,8 @@ const getMovie = async  function (num) {
  for(let i = 0; i < films.length; i++){
 
 
+    
+
     cards.innerHTML += `
 <div class="card col-4 mt-3  " style="width: 18rem;">
 <img src="${films[i].poster.url}" class="card-img-top" alt="...">
@@ -33,7 +35,7 @@ const getMovie = async  function (num) {
 
 <p class="card-text  text-center about "> Описание : ${films[i].description.substring(0,200)}... </p>
 </div>
-<a href="/html/filmsId.html?films=${films[i].id}"   class="btn btn-primary  mb-2">Перейти куда-нибудь</a>
+<a href="/html/filmsId.html?films=${films[i].id}"   class="btn btn-primary  mb-2">Описание </a>
 
 </div> 
 

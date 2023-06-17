@@ -18,8 +18,10 @@ const CurrentSection = document.querySelector('.card--section'),
       movieLengthSection = document.querySelector('.movie--length'),
        rootMovieLength = document.querySelector('.root-mv-length')
       sliderSection = document.querySelector('.mySwiper'),
-      value = document.querySelector('.value'),
-      btnSearch = document.querySelector('.btn--search')
+      sliderSectionFacts = document.querySelector('.mySwiperFacts'),
+      input = document.querySelector('.input'),
+      btnSearch = document.querySelector('.btn--search');
+     const   factHeader = document.querySelector('.fact--header');
 
       const  currentFilmsId  =  window.location.search.split('=')[1]
 
@@ -40,9 +42,12 @@ const newFilmsGet   = async function(num){
 
       },
   })
+  
   const filmsResp = await  resp.json()
 //  console.log(filmsResp.docs)
 
+
+//  отображение Слайдера 
  filmsResp.docs.forEach(film => {
 //  console.log(film)
  sliderSection.innerHTML += `
@@ -69,7 +74,6 @@ newFilmsGet( 'https://api.kinopoisk.dev/v1.3/movie?page=1&limit=50&rating.imdb=8
         headers:{
          'accept': 'application/json',
           'X-API-KEY': apiKey,
-
         },
     })
 
@@ -110,24 +114,28 @@ console.log(filmsResp)
 
    } 
    
-   // отображение   стран производства
-    // filmsResp.audience.forEach(cn => {
-    //    countrySection.textContent += ` ${cn.country} `
-    // });
+  //  отображение   стран производства
+    filmsResp.countries.forEach(cn => {
+      // let countries =  cn.name
+       countrySection.textContent += ` ${cn.name} `
+    });
 
       // отображение  жанра 
  
-      filmsResp.countries.map(cn =>{
-        countrySection.textContent = `${cn.name}`
-      })
-
 
     filmsResp.genres.forEach(gn => {
        genresSection.textContent += ` ${gn.name} `
     });
     
-    btnTreiler.setAttribute('href', `${filmsResp.videos.trailers[0].url}`)
+    // btnTreiler.setAttribute('href', `${filmsResp.videos.trailers[0].url}`)
 
+if(filmsResp.videos.trailers <= 0  ){
+  btnTreiler.textContent = 'Трейлер  Отствует'
+  btnTreiler.classList.add('disabled')
+
+}else{
+  btnTreiler.setAttribute('href', `${filmsResp.videos.trailers[0].url}`)
+}
 
     premierSection.textContent += `${filmsResp.year}`
 
@@ -139,15 +147,33 @@ for(let i = 0; i < 10; i++){
 
 // описание фильма
 
-aboutSection.textContent = ` ${filmsResp.description}`
+aboutSection.textContent = filmsResp.description?`${filmsResp.description}`:`${filmsResp.shortDescription}`
+
+
 
 
 }
+
+
+/// Отображение Фактов
+
+if(filmsResp.facts.length >= 0 && filmsResp.facts !== [] ){
+  for(let i = 1; i < filmsResp.facts.length; i++){
+    factHeader.textContent = 'Факты'
+    sliderSectionFacts.innerHTML += `
+    <swiper-slide ${i} >
+    <h5 class="text-light text-center">Факт ${i}</h5>
+   <span class="text-light text-facts">${filmsResp.facts[i].value}</span>
+    </swiper-slide>
+    `
+    
+  }
+  }
+
 input.addEventListener('change', (e) => {
   if(input.value !== ''){
      btnSearch.addEventListener('click', (e) => {
      e.currentTarget.setAttribute('href', `/html/search.html?films=${input.value}`)
-     input.value = ''
      })
   }
  
