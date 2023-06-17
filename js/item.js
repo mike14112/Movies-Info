@@ -173,7 +173,7 @@ if(filmsResp.facts.length >= 0 && filmsResp.facts !== [] ){
 input.addEventListener('change', (e) => {
   if(input.value !== ''){
      btnSearch.addEventListener('click', (e) => {
-     e.currentTarget.setAttribute('href', `/html/search.html?films=${input.value}`)
+     e.currentTarget.setAttribute('href', `/docs/search.html?films=${input.value}`)
      })
   }
  
