@@ -31,7 +31,7 @@ const getMovie = async  function (num) {
     <p class="card-text  text-center genre"> Жанр :${films[i].genres[0].name}</p>
     <p class="card-text  text-center about "> Описание : ${films[i].description.substring(0,200)}... </p>
     </div>
-    <a href="/docs/filmsId.html?films=${films[i].id}"   class="btn btn-primary  mb-2">Перейти куда-нибудь</a>
+    <a href="filmsId.html?films=${films[i].id}"   class="btn btn-primary  mb-2">Перейти куда-нибудь</a>
     
     </div> 
 
