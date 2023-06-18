@@ -39,7 +39,7 @@ const getMovie = async  function (num) {
 input.addEventListener('change', (e) => {
     if(input.value !== ''){
        btnSearch.addEventListener('click', (e) => {
-       e.currentTarget.setAttribute('href', `/docs/search.html?films=${input.value}`)
+       e.currentTarget.setAttribute('href', `search.html?films=${input.value}`)
        input.value = ''
        })
     }

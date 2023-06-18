@@ -52,7 +52,7 @@ const newFilmsGet   = async function(num){
 //  console.log(film)
  sliderSection.innerHTML += `
  <swiper-slide>
- <a href="/html/filmsId.html?film=${film.id}"><img src=" ${film.poster.url}"/></a>
+ <a href="filmsId.html?film=${film.id}"><img src=" ${film.poster.url}"/></a>
  </swiper-slide>
  `
  
@@ -173,7 +173,7 @@ if(filmsResp.facts.length >= 0 && filmsResp.facts !== [] ){
 input.addEventListener('change', (e) => {
   if(input.value !== ''){
      btnSearch.addEventListener('click', (e) => {
-     e.currentTarget.setAttribute('href', `/docs/search.html?films=${input.value}`)
+     e.currentTarget.setAttribute('href', `search.html?films=${input.value}`)
      })
   }
  
