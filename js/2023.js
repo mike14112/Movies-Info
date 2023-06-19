@@ -1,7 +1,9 @@
 "use strict"
 const  cards =  document.querySelector('.cards--section'),
        input = document.querySelector('.input'),
-       btnSearch = document.querySelector('.btn--search')
+       btnSearch = document.querySelector('.btn--search'),
+       spinner = document.querySelectorAll('.spinner-grow'),
+       headerTextCard = document.querySelector('.cards-text');
 
 const  currentFilmsId  =  window.location.search.split('=')[1]
 
@@ -17,7 +19,13 @@ const getMovie = async  function (num) {
     })
     const filmsResp = await resp.json()
     const  films = filmsResp.docs
-    console.log(films[0])
+
+    if(resp.ok === true){
+      headerTextCard.textContent = 'Фильмы 2023 Года '
+  spinner.forEach(sp => {
+      sp.style.display = 'none'
+  })
+
  for(let i = 0; i < films.length; i++){
 
     cards.innerHTML += `
@@ -36,6 +44,9 @@ const getMovie = async  function (num) {
     </div> 
 
 `
+
+}
+
 input.addEventListener('change', (e) => {
     if(input.value !== ''){
        btnSearch.addEventListener('click', (e) => {

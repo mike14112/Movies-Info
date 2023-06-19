@@ -6,11 +6,14 @@
 
 const input = document.querySelector('.input'),
       btnSearch = document.querySelector('.btn--search'),
-     cards =  document.querySelector('.cards--section');
+     cards =  document.querySelector('.cards--section'),
+     spinner = document.querySelectorAll('.spinner-grow'),
+     headerTextCard = document.querySelector('.cards-text');
 
 const getSearchMovies = window.location.href.split('=')[1]
 
-console.log(getSearchMovies)
+
+
 
 
 const getMovie = async  function (value) {
@@ -24,7 +27,13 @@ const getMovie = async  function (value) {
      })
      const filmsResp = await resp.json()
      const  films = filmsResp.docs
-     console.log(films)
+
+     if(resp.ok === true){
+          headerTextCard.textContent = 'Фильмы по Запросу'
+      spinner.forEach(sp => {
+          sp.style.display = 'none'
+      })
+  
   for(let i = 0; i < films.length; i++){
  
  
@@ -47,8 +56,9 @@ if(films[i].rating >= 5 && films[i].poster !== null){
      </div> 
      
      `
+
 }
- 
+}
  
  
  

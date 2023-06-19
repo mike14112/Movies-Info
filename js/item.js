@@ -21,12 +21,16 @@ const CurrentSection = document.querySelector('.card--section'),
       sliderSectionFacts = document.querySelector('.mySwiperFacts'),
       input = document.querySelector('.input'),
       btnSearch = document.querySelector('.btn--search');
-     const   factHeader = document.querySelector('.fact--header');
+     const   factHeader = document.querySelector('.fact--header'),
+      personsId = document.querySelectorAll('.all');
 
       const  currentFilmsId  =  window.location.search.split('=')[1]
 
- console.log(currentFilmsId)
 
+
+
+
+console.log(getSearchMovies)
 
 // new films function 
 
@@ -169,6 +173,8 @@ if(filmsResp.facts.length >= 0 && filmsResp.facts !== [] ){
     
   }
   }
+personsId.forEach(per => {
+})
 
 input.addEventListener('change', (e) => {
   if(input.value !== ''){
