@@ -30,7 +30,7 @@ const CurrentSection = document.querySelector('.card--section'),
 
 
 
-console.log(getSearchMovies)
+// console.log(getSearchMovies)
 
 // new films function 
 
