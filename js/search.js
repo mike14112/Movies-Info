@@ -34,10 +34,13 @@ const getMovie = async  function (value) {
           sp.style.display = 'none'
       })
   
+      console.log(filmsResp)
+
+
   for(let i = 0; i < films.length; i++){
  
  
-if(films[i].rating >= 5 && films[i].poster !== null){
+if(films[i].rating >= 5 && films[i].poster !== null && filmsResp.docs.length !== []){
    
      cards.innerHTML += `
      <div class="card col-4 mt-5  " style="width: 18rem;">
@@ -56,6 +59,8 @@ if(films[i].rating >= 5 && films[i].poster !== null){
      </div> 
      
      `
+}else  {
+     headerTextCard.textContent = 'Ничего не Найдено'
 
 }
 }
