@@ -173,6 +173,10 @@ if(filmsResp.facts.length >= 0 && filmsResp.facts !== [] ){
     
   }
   }
+ const p = document.querySelectorAll('.all')
+ p.forEach( per => {
+  per.classList.add('btn', 'btn-sm', 'disabled')
+ })
 personsId.forEach(per => {
 })
 
