@@ -10,7 +10,7 @@ const  currentFilmsId  =  window.location.search.split('=')[1]
 
 const getMovie = async  function (num) {
     const ApiKey = '6ZPCSH8-QRK4NTV-Q3W6R5S-Q3WXF8R'
-    const resp = await fetch(`https://api.kinopoisk.dev/v1.3/movie?page=1&limit=${num}&type=movie`,{
+    const resp = await fetch(`https://api.kinopoisk.dev/v1.3/movie?page=1&limit=${num}&type=movie&year=2022&rating.imdb=6.5-9.5 `,{
         headers:{
              'accept': 'application/json',
              'X-API-KEY':ApiKey,
@@ -19,6 +19,7 @@ const getMovie = async  function (num) {
     })
     const filmsResp = await resp.json()
     const  films = filmsResp.docs
+    console.log(films)
 
     if(resp.ok === true){
       headerTextCard.textContent = 'Фильмы 2023 Года '
@@ -26,6 +27,7 @@ const getMovie = async  function (num) {
       sp.style.display = 'none'
   })
 
+  console.log(films[1].description)
  for(let i = 0; i < films.length; i++){
 
     cards.innerHTML += `
@@ -37,7 +39,7 @@ const getMovie = async  function (num) {
     <p class="card-text  text-center raiting">Рейтинг: <span class="text-danger"> ${films[i].rating.imdb}</span></p>
     <p class="card-text  text-center year">Год: ${films[i].year}</p>
     <p class="card-text  text-center genre"> Жанр :${films[i].genres[0].name}</p>
-    <p class="card-text  text-center about "> Описание : ${films[i].description.substring(0,200)}... </p>
+    <p class="card-text  text-center about "> Описание : ${films[i].description ?`${films[i].description.substring(0,50)}...`:`Описание Отсутсвует`} </p>
     </div>
     <a href="filmsId.html?films=${films[i].id}"   class="btn btn-primary  mb-2">Описание</a>
     
@@ -60,4 +62,4 @@ input.addEventListener('change', (e) => {
      }
 
 }
-getMovie('https://api.kinopoisk.dev/v1.3/movie?page=1&limit=50&year=2023')
+getMovie(50)

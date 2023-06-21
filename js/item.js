@@ -150,6 +150,9 @@ for(let i = 0; i < 10; i++){
  actorsSection.innerHTML +=` <span> ${filmsResp.persons[i].name}. </span>`
 
 // описание фильма
+if(filmsResp.description === null &&filmsResp.shortDescription ){
+  aboutSection.textContent = 'Описание Отствует ! '
+}
 
 aboutSection.textContent = filmsResp.description?`${filmsResp.description}`:`${filmsResp.shortDescription}`
 
