@@ -9,7 +9,7 @@ const  currentFilmsId  =  window.location.search.split('=')[1]
 
 
 const getMovie = async  function (num) {
-    const ApiKey = '6ZPCSH8-QRK4NTV-Q3W6R5S-Q3WXF8R'
+    const ApiKey = 'MB1SXNX-SDFM9JF-J2QYCNR-735JGAF'
     const resp = await fetch(`https://api.kinopoisk.dev/v1.3/movie?page=1&limit=${num}&type=movie&year=2022&rating.imdb=6.5-9.5 `,{
         headers:{
              'accept': 'application/json',

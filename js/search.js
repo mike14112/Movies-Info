@@ -17,7 +17,7 @@ const getSearchMovies = window.location.href.split('=')[1]
 
 
 const getMovie = async  function (value) {
-     const ApiKey = '6ZPCSH8-QRK4NTV-Q3W6R5S-Q3WXF8R'
+     const ApiKey = 'MB1SXNX-SDFM9JF-J2QYCNR-735JGAF'
      const resp = await fetch(`https://api.kinopoisk.dev/v1.2/movie/search?page=1&limit=10&query=${value}`,{
          headers:{
               'accept': 'application/json',

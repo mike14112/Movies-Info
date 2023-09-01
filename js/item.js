@@ -37,7 +37,7 @@ const CurrentSection = document.querySelector('.card--section'),
 const newFilmsGet   = async function(num){
 
 
-  const apiKey = '6ZPCSH8-QRK4NTV-Q3W6R5S-Q3WXF8R'
+  const apiKey = 'MB1SXNX-SDFM9JF-J2QYCNR-735JGAF'
 
   const resp  = await  fetch(num, {
       headers:{
