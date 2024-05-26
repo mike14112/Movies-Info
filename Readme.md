@@ -5,7 +5,7 @@
 
  <h3><a href="https://mike14112.github.io/Movies-Info/" target="_blank" style="text-decoration:none; color:white;">Link Web site </a> </h3>
 
-<p>Hello! This is an educational project that I wanted to make as close to real projects as possible. I used a paid API to practice working with databases, dynamically displaying data, and error handling. color:red;"> Unfortunately, at the moment,  I can't afford the subscription,and some parts of the project have become static. </span>  However, I continue to develop and learn new technologies, and in the future, I plan to migrate the project to Vue.js."</p>
+<p>Hello! This is an educational project that I wanted to make as close to real projects as possible. I used a paid API to practice working with databases, dynamically displaying data, and error handling. <span color:red;"> Unfortunately, at the moment,  I can't afford the subscription,and some parts of the project have become static. </span>  However, I continue to develop and learn new technologies, and in the future, I plan to migrate the project to Vue.js."</p>
 
    <h2> The technologies I used </h2>
 
